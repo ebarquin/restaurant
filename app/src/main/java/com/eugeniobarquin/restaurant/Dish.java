@@ -6,9 +6,9 @@ public class Dish {
     private String mName;
     private int mImage;
     private String mAlergens;
-    private Float mPrice;
+    private float mPrice;
 
-    public Dish(String name, int image, String alergens, Float price) {
+    public Dish(String name, int image, String alergens, float price) {
         mName = name;
         mImage = image;
         mAlergens = alergens;
