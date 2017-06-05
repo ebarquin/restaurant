@@ -23,7 +23,7 @@
         android:layout_marginTop="@dimen/default_margin"
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/dish_image"
-        android:layout_above="@+id/dish_price"
+        android:layout_above="@+id/dish_notes"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="@dimen/default_margin"
         android:layout_marginRight="@dimen/default_margin">
@@ -40,14 +40,20 @@
             android:layout_height="wrap_content"
             tools:text="Alergens"/>
 
+        <TextView
+            android:id="@+id/dish_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Price"/>
+
     </LinearLayout>
 
     <TextView
-        android:id="@+id/dish_price"
+        android:id="@+id/dish_notes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        tools:text="Price"
+        tools:text="Notes"
         android:layout_marginLeft="@dimen/default_margin"
         android:layout_marginRight="@dimen/default_margin"
         android:layout_marginBottom="@dimen/default_margin"

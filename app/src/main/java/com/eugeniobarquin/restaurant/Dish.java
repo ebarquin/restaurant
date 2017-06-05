@@ -7,12 +7,14 @@ public class Dish {
     private int mImage;
     private String mAlergens;
     private float mPrice;
+    private String mNotes;
 
-    public Dish(String name, int image, String alergens, float price) {
+    public Dish(String name, int image, String alergens, float price, String notes) {
         mName = name;
         mImage = image;
         mAlergens = alergens;
         mPrice = price;
+        mNotes = notes;
     }
 
     public String getName() {
@@ -45,5 +47,13 @@ public class Dish {
 
     public void setPrice(Float price) {
         mPrice = price;
+    }
+
+    public String getNotes() {
+        return mNotes;
+    }
+
+    public void setNotes(String notes) {
+        mName = notes;
     }
 }

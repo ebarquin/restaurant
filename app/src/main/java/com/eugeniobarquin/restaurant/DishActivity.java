@@ -15,7 +15,7 @@ public class DishActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dish);
 
         //Fake model
-        Dish dish = new Dish("Ensalada", R.drawable.ensalada, "Gluten", 12);
+        Dish dish = new Dish("Ensalada", R.drawable.ensalada, "Gluten", 12, "Poco hecho");
         setDish(dish);
 
 
@@ -27,11 +27,13 @@ public class DishActivity extends AppCompatActivity {
         TextView dishName = (TextView) findViewById(R.id.dish_name);
         TextView dishAlergens = (TextView) findViewById(R.id.dish_alergens);
         TextView dishPrice = (TextView) findViewById(R.id.dish_price);
+        TextView dishNotes = (TextView) findViewById(R.id.dish_notes);
 
         //Update view and model
         dishImage.setImageResource(dish.getImage());
         dishName.setText(dish.getName());
         dishAlergens.setText(dish.getAlergens());
         dishPrice.setText(getString(R.string.dish_price_format, dish.getPrice()));
+        dishNotes.setText(dish.getNotes());
     }
 }
