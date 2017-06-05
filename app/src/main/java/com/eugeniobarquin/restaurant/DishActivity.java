@@ -50,7 +50,7 @@ public class DishActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        super.onOptionsItemSelected(item);
+        boolean superReturn = super.onOptionsItemSelected(item);
         if (item.getItemId() == R.id.menu_add_dish) {
             Log.v(TAG, "Add dish option pulsed");
         }
@@ -58,6 +58,6 @@ public class DishActivity extends AppCompatActivity {
             Log.v(TAG, "Menu calculate option pulsed");
         }
 
-        return true;
+        return superReturn;
     }
 }
