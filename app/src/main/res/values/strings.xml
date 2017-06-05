@@ -2,6 +2,8 @@
     <string name="app_name">Restaurant</string>
     <string name="dish_image">Dish image</string>
     <string name="dish_price_format">Precio %.2f €</string>
+    <string name="add_dish">Añadir plato</string>
+    <string name="menu_calculate">Calcular cuenta</string>
 
 
 </resources>

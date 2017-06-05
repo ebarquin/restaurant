@@ -12,5 +12,6 @@ public class MenuListActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_menu_list);
     }
+
 }
 

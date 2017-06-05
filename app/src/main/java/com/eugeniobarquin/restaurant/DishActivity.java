@@ -2,6 +2,9 @@ package com.eugeniobarquin.restaurant;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,5 +38,26 @@ public class DishActivity extends AppCompatActivity {
         dishAlergens.setText(dish.getAlergens());
         dishPrice.setText(getString(R.string.dish_price_format, dish.getPrice()));
         dishNotes.setText(dish.getNotes());
+    }
+    //Menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+
+        getMenuInflater().inflate(R.menu.menu_dish, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.menu_add_dish) {
+            Log.v(TAG, "Add dish option pulsed");
+        }
+        else if (item.getItemId() == R.id.menu_calculate) {
+            Log.v(TAG, "Menu calculate option pulsed");
+        }
+
+        return true;
     }
 }
