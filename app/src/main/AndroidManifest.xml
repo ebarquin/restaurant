@@ -17,8 +17,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.MenuListActivity">
-
         </activity>
+        <activity
+            android:name=".activity.DishPagerActivity"
+            android:label="@string/title_activity_dish_pager"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
     </application>
 
 </manifest>
