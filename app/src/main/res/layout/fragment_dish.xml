@@ -9,6 +9,7 @@
     tools:context="com.eugeniobarquin.restaurant.fragment.DishFragment">
 
 
+
     <ImageView
         android:id="@+id/dish_image"
         android:layout_width="200dp"
