@@ -43,10 +43,8 @@ class DishPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        DishFragment fragment = new DishFragment();
-        Bundle arguments = new Bundle();
-        arguments.putSerializable(DishFragment.ARG_TABLE, mTable.getDish(position));
-        fragment.setArguments(arguments);
+        DishFragment fragment = DishFragment.newInstance(mTable.getDish(position));
+
         return fragment;
     }
 

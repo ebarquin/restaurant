@@ -14,10 +14,30 @@ import com.eugeniobarquin.restaurant.R;
 
 
 public class DishFragment extends Fragment{
-    public static final String ARG_TABLE = "table";
+    protected static final String ARG_TABLE = "table";
 
     private View mRoot;
     private Dish mDish;
+
+    public static DishFragment newInstance (Dish dish) {
+        DishFragment fragment = new DishFragment();
+        Bundle arguments = new Bundle();
+        arguments.putSerializable(ARG_TABLE, dish);
+        fragment.setArguments(arguments);
+
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (getArguments() !=null) {
+            //Recibe model as argument
+            mDish = (Dish) getArguments().getSerializable(ARG_TABLE);
+
+        }
+    }
 
     @Nullable
     @Override
@@ -25,8 +45,7 @@ public class DishFragment extends Fragment{
         super.onCreateView(inflater, container, savedInstanceState);
         mRoot = inflater.inflate(R.layout.fragment_dish, container, false);
 
-        //Recibe model as argument
-        mDish = (Dish) getArguments().getSerializable(ARG_TABLE);
+
         setDish();
 
 
