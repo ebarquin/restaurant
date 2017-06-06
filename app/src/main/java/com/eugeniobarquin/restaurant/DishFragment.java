@@ -18,7 +18,7 @@ public class DishFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View mRoot = inflater.inflate(R.layout.fragment_dish, container, false);
+        mRoot = inflater.inflate(R.layout.fragment_dish, container, false);
 
         //Fake model
         mDish = new Dish("Ensalada", R.drawable.ensalada, "Gluten", 12, "Poco hecho");
