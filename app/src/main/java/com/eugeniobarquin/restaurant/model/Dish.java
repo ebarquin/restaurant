@@ -1,7 +1,9 @@
 package com.eugeniobarquin.restaurant.model;
 
 
-public class Dish {
+import java.io.Serializable;
+
+public class Dish implements Serializable {
 
     private String mName;
     private int mImage;

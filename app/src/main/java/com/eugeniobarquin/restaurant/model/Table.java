@@ -3,9 +3,10 @@ package com.eugeniobarquin.restaurant.model;
 
 import com.eugeniobarquin.restaurant.R;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class Table {
+public class Table implements Serializable {
     private LinkedList<Dish> mDishes;
 
     //Fake Table

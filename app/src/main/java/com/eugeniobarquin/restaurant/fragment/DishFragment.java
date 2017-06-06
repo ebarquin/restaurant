@@ -14,6 +14,8 @@ import com.eugeniobarquin.restaurant.R;
 
 
 public class DishFragment extends Fragment{
+    public static final String ARG_TABLE = "table";
+
     private View mRoot;
     private Dish mDish;
 
@@ -23,8 +25,8 @@ public class DishFragment extends Fragment{
         super.onCreateView(inflater, container, savedInstanceState);
         mRoot = inflater.inflate(R.layout.fragment_dish, container, false);
 
-        //Fake model
-        mDish = new Dish("Ensalada", R.drawable.ensalada, "Gluten", 12, "Poco hecho");
+        //Recibe model as argument
+        mDish = (Dish) getArguments().getSerializable(ARG_TABLE);
         setDish();
 
 
