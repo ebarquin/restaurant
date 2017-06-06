@@ -1,4 +1,4 @@
-package com.eugeniobarquin.restaurant;
+package com.eugeniobarquin.restaurant.model;
 
 
 public class Dish {

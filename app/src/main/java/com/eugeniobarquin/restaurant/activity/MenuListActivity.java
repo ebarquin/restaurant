@@ -1,8 +1,10 @@
-package com.eugeniobarquin.restaurant;
+package com.eugeniobarquin.restaurant.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+
+import com.eugeniobarquin.restaurant.R;
 
 
 public class MenuListActivity extends AppCompatActivity {

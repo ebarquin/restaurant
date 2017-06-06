@@ -1,4 +1,4 @@
-package com.eugeniobarquin.restaurant;
+package com.eugeniobarquin.restaurant.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.eugeniobarquin.restaurant.R;
 
 public class DishActivity extends AppCompatActivity {
 

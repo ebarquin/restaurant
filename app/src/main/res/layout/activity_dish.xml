@@ -5,12 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.eugeniobarquin.restaurant.DishActivity">
+    tools:context="com.eugeniobarquin.restaurant.activity.DishActivity">
 
     <fragment
         android:id="@+id/dish_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.eugeniobarquin.restaurant.DishFragment" />
+        android:name="com.eugeniobarquin.restaurant.fragment.DishFragment" />
 
 </FrameLayout>
