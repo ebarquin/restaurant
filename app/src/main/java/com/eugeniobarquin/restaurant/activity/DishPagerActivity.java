@@ -1,13 +1,11 @@
 package com.eugeniobarquin.restaurant.activity;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import com.eugeniobarquin.restaurant.R;
 import com.eugeniobarquin.restaurant.fragment.DishFragment;
@@ -21,15 +19,19 @@ public class DishPagerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dish_pager);
 
         ViewPager pager = (ViewPager) findViewById(R.id.view_pager);
+        Table table = new Table();
+        DishPagerAdapter adapter = new DishPagerAdapter(getFragmentManager(), table);
+
+        pager.setAdapter(adapter);
 
     }
 
 }
 
-class CityPagerAdapter extends FragmentPagerAdapter {
+class DishPagerAdapter extends FragmentPagerAdapter {
     private Table mTable;
 
-    public CityPagerAdapter(FragmentManager fm , Table table) {
+    public DishPagerAdapter(FragmentManager fm , Table table) {
         super(fm);
         mTable = table;
     }
