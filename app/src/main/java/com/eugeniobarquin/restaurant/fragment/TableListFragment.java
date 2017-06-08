@@ -2,11 +2,13 @@ package com.eugeniobarquin.restaurant.fragment;
 
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -20,6 +22,7 @@ public class TableListFragment extends Fragment {
     private static String ARG_TABLES = "tables";
 
     protected LinkedList<Table> mTables;
+    protected OnTableSelectedListener mOnTableSelectedListener;
 
     public static TableListFragment newInstance(LinkedList<Table> tables) {
         TableListFragment fragment = new TableListFragment();
@@ -60,7 +63,45 @@ public class TableListFragment extends Fragment {
         //Give adapter to ListView to populate the list
         list.setAdapter(adapter);
 
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (mOnTableSelectedListener != null) {
+                    Table selectedTable = mTables.get(position);
+                    mOnTableSelectedListener.onTableSelected(selectedTable, position);
+                }
+            }
+        });
+
+
         return root;
+    }
+
+    @Override
+    public void onAttachFragment(Fragment childFragment) {
+        super.onAttachFragment(childFragment);
+        if (getActivity()instanceof OnTableSelectedListener) {
+            mOnTableSelectedListener = (OnTableSelectedListener) getActivity();
+        }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (getActivity()instanceof OnTableSelectedListener) {
+            mOnTableSelectedListener = (OnTableSelectedListener) getActivity();
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+
+        mOnTableSelectedListener = null;
+    }
+
+    public interface OnTableSelectedListener {
+        void onTableSelected(Table table, int position);
     }
 
 }

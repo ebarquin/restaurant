@@ -14,7 +14,7 @@ import com.eugeniobarquin.restaurant.fragment.TableListFragment;
 import com.eugeniobarquin.restaurant.model.Restaurant;
 import com.eugeniobarquin.restaurant.model.Table;
 
-public class DishActivity extends AppCompatActivity {
+public class DishActivity extends AppCompatActivity implements TableListFragment.OnTableSelectedListener {
 
     protected static String TAG = DishActivity.class.getCanonicalName();
 
@@ -35,6 +35,12 @@ public class DishActivity extends AppCompatActivity {
             fm.beginTransaction().add(R.id.table_list_fragment, fragment).commit();
         }
 
+    }
+
+    @Override
+    public void onTableSelected(Table table, int position) {
+        Intent intent = new Intent(this, DishPagerActivity.class );
+        startActivity(intent);
     }
 
     //Menu
@@ -61,4 +67,6 @@ public class DishActivity extends AppCompatActivity {
 
         return superReturn;
     }
+
+
 }
