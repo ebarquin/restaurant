@@ -8,6 +8,9 @@ import java.util.LinkedList;
 
 public class Table implements Serializable {
     private LinkedList<Dish> mDishes;
+    private int mNumber;
+
+
 
     //Fake Table
     public Table() {
@@ -18,12 +21,25 @@ public class Table implements Serializable {
         mDishes.add(new Dish("Sopa", R.drawable.sopa, "Gluten", 15, "Muy caliente"));
     }
 
+    public Table(LinkedList<Dish> dishes, int number) {
+        mDishes = dishes;
+        mNumber = number;
+    }
+
     public Dish getDish(int index) {
         return mDishes.get(index);
     }
 
     public int getCount() {
         return mDishes.size();
+    }
+
+    public int getNumber() {
+        return mNumber;
+    }
+
+    public void setNumber(int number) {
+        mNumber = number;
     }
 
 }
