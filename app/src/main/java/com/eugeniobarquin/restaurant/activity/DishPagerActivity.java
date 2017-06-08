@@ -12,11 +12,13 @@ import android.view.MenuItem;
 
 import com.eugeniobarquin.restaurant.R;
 import com.eugeniobarquin.restaurant.fragment.DishFragment;
+import com.eugeniobarquin.restaurant.fragment.DishPagerFragment;
+import com.eugeniobarquin.restaurant.model.Restaurant;
 import com.eugeniobarquin.restaurant.model.Table;
 
 public class DishPagerActivity extends AppCompatActivity {
 
-
+    public static final String EXTRA_TABLE = "EXTRA_TABLE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,16 @@ public class DishPagerActivity extends AppCompatActivity {
         //Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //Recibimos la mesa que queremos mostrar
+        Table table = getIntent().getSerializableExtra(EXTRA_TABLE, ));
+
+        //Añadimos si hace falta, el CityPagerFragment a nuestra jerarquía
+        FragmentManager fm = getFragmentManager();
+        if (fm.findFragmentById(R.id.fragment_dish_pager) == null) {
+            DishPagerFragment fragment = DishPagerFragment.newInstance(table);
+            fm.beginTransaction().add(R.id.fragment_dish_pager, fragment).commit();
+        }
 
     }
 

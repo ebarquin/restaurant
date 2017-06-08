@@ -9,19 +9,10 @@
     tools:context="com.eugeniobarquin.restaurant.activity.DishPagerActivity"
     tools:showIn="@layout/activity_dish_pager">
 
-    <fragment
-        android:id="@+id/fragment"
-        android:name="com.eugeniobarquin.restaurant.fragment.DishPagerFragment"
+
+    <FrameLayout
+        android:id="@+id/fragment_dish_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-
-    <!--<android.support.v4.view.ViewPager-->
-        <!--android:id="@+id/view_pager"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content">-->
-
-
-    <!--</android.support.v4.view.ViewPager>-->
+        android:layout_height="match_parent"/>
 
 </FrameLayout>

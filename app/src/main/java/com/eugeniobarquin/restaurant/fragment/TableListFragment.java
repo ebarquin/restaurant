@@ -19,7 +19,7 @@ import java.util.LinkedList;
 
 
 public class TableListFragment extends Fragment {
-    private static String ARG_TABLES = "tables";
+    private static String ARG_TABLE = "ARG_TABLE";
 
     protected LinkedList<Table> mTables;
     protected OnTableSelectedListener mOnTableSelectedListener;
@@ -28,7 +28,7 @@ public class TableListFragment extends Fragment {
         TableListFragment fragment = new TableListFragment();
 
         Bundle arguments = new Bundle();
-        arguments.putSerializable(ARG_TABLES, tables);
+        arguments.putSerializable(ARG_TABLE, tables);
         fragment.setArguments(arguments);
 
         return fragment;
@@ -40,7 +40,7 @@ public class TableListFragment extends Fragment {
 
         //Get table list
         if (getArguments() != null) {
-            mTables = (LinkedList<Table>) getArguments().getSerializable(ARG_TABLES);
+            mTables = (LinkedList<Table>) getArguments().getSerializable(ARG_TABLE);
         }
 
 

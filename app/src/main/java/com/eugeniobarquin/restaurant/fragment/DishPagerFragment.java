@@ -20,9 +20,20 @@ import com.eugeniobarquin.restaurant.model.Table;
 
 public class DishPagerFragment extends Fragment {
 
+    private static final String ARG_TABLE = "ARG_TABLE";
+
     private ViewPager mPager;
     private Table mTable;
 
+    public static DishPagerFragment newInstance(Table table) {
+        DishPagerFragment fragment = new DishPagerFragment();
+        Bundle arguments = new Bundle();
+        arguments.putSerializable(ARG_TABLE, table);
+        fragment.setArguments(arguments);
+
+        return fragment;
+
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
