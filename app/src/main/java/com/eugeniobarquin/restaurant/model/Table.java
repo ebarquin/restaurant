@@ -8,7 +8,7 @@ import java.util.LinkedList;
 
 public class Table implements Serializable {
     private LinkedList<Dish> mDishes;
-    private int mNumber;
+    private String mNumber;
 
 
 
@@ -21,7 +21,7 @@ public class Table implements Serializable {
         mDishes.add(new Dish("Sopa", R.drawable.sopa, "Gluten", 15, "Muy caliente"));
     }
 
-    public Table(LinkedList<Dish> dishes, int number) {
+    public Table(LinkedList<Dish> dishes, String number) {
         mDishes = dishes;
         mNumber = number;
     }
@@ -34,12 +34,16 @@ public class Table implements Serializable {
         return mDishes.size();
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return mNumber;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         mNumber = number;
     }
 
+    @Override
+    public String toString() {
+        return getNumber();
+    }
 }
