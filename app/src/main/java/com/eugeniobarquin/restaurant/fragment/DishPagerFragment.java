@@ -61,11 +61,15 @@ public class DishPagerFragment extends Fragment {
             //Move pager backward
             mPager.setCurrentItem(mPager.getCurrentItem() - 1);
 
+            invalidateOptionsMenu();
+
             return true;
         }
         else if (item.getItemId() == R.id.next) {
             //Move pager fordward
             mPager.setCurrentItem(mPager.getCurrentItem() + 1);
+
+            invalidateOptionsMenu();
 
             return true;
         }
