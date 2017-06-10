@@ -31,11 +31,9 @@ public class DishPagerActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        LinkedList<Dish> fakeDish = new LinkedList<>();
-        Table fakeTable = new Table(fakeDish, "Mesa Fake");
 
         //Recibimos el indice de la mesa que queremos mostrar
-        Table table = getIntent().getSerializableExtra(EXTRA_TABLE, fakeTable);
+        Table table = (Table) getIntent().getSerializableExtra(EXTRA_TABLE);
         //Table tableIndex = getIntent().getSerializableExtra(EXTRA_TABLE, new Table());
 
         //Añadimos si hace falta, el CityPagerFragment a nuestra jerarquía

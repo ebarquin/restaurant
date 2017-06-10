@@ -44,11 +44,9 @@ public class DishPagerFragment extends Fragment {
 
         setHasOptionsMenu(true);
 
-        LinkedList<Dish> fakeDish = new LinkedList<>();
-        Table fakeTable = new Table(fakeDish, "Mesa Fake");
 
         if (getArguments() != null) {
-            mTable = getArguments().getSerializable(ARG_TABLE, fakeTable);
+            mTable = (Table) getArguments().getSerializable(ARG_TABLE);
         }
         
     }

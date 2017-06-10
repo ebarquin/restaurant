@@ -14,7 +14,10 @@ import com.eugeniobarquin.restaurant.fragment.TableListFragment;
 import com.eugeniobarquin.restaurant.model.Restaurant;
 import com.eugeniobarquin.restaurant.model.Table;
 
+
+
 public class DishActivity extends AppCompatActivity implements TableListFragment.OnTableSelectedListener {
+
 
     protected static String TAG = DishActivity.class.getCanonicalName();
 
