@@ -16,7 +16,10 @@ import android.view.ViewGroup;
 
 import com.eugeniobarquin.restaurant.R;
 
+import com.eugeniobarquin.restaurant.model.Dish;
 import com.eugeniobarquin.restaurant.model.Table;
+
+import java.util.LinkedList;
 
 public class DishPagerFragment extends Fragment {
 
@@ -40,6 +43,14 @@ public class DishPagerFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         setHasOptionsMenu(true);
+
+        LinkedList<Dish> fakeDish = new LinkedList<>();
+        Table fakeTable = new Table(fakeDish, "Mesa Fake");
+
+        if (getArguments() != null) {
+            mTable = getArguments().getSerializable(ARG_TABLE, fakeTable);
+        }
+        
     }
 
     @Nullable

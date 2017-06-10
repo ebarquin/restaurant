@@ -68,7 +68,7 @@ public class TableListFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (mOnTableSelectedListener != null) {
                     Table selectedTable = mTables.get(position);
-                    mOnTableSelectedListener.onTableSelected(selectedTable, position);
+                    mOnTableSelectedListener.onTableSelected(selectedTable);
                 }
             }
         });
@@ -101,7 +101,7 @@ public class TableListFragment extends Fragment {
     }
 
     public interface OnTableSelectedListener {
-        void onTableSelected(Table table, int position);
+        void onTableSelected(Table table);
     }
 
 }
