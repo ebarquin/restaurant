@@ -1,14 +1,21 @@
 package com.eugeniobarquin.restaurant.fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.eugeniobarquin.restaurant.activity.DishActivity;
+import com.eugeniobarquin.restaurant.activity.MenuListActivity;
 import com.eugeniobarquin.restaurant.model.Dish;
 import com.eugeniobarquin.restaurant.R;
 
@@ -16,6 +23,7 @@ import com.eugeniobarquin.restaurant.R;
 public class DishFragment extends Fragment{
     protected static final String ARG_TABLE = "table";
 
+    protected static String TAG = DishActivity.class.getCanonicalName();
     private View mRoot;
     private Dish mDish;
 
@@ -31,6 +39,8 @@ public class DishFragment extends Fragment{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setHasOptionsMenu(true);
 
         if (getArguments() !=null) {
             //Recibe model as argument
@@ -66,5 +76,31 @@ public class DishFragment extends Fragment{
         dishAlergens.setText(mDish.getAlergens());
         dishPrice.setText(getString(R.string.dish_price_format, mDish.getPrice()));
         dishNotes.setText(mDish.getNotes());
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+
+        inflater.inflate(R.menu.menu_dish, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        boolean superReturn = super.onOptionsItemSelected(item);
+
+        if (item.getItemId() == R.id.menu_add_dish) {
+            Log.v(TAG, "Add dish option pressed");
+
+            Intent menuListIntent = new Intent(getActivity(), MenuListActivity.class);
+            startActivity(menuListIntent);
+        }
+        else if (item.getItemId() == R.id.menu_calculate) {
+            Log.v(TAG, "Menu calculate option pressed");
+        }
+
+
+
+        return superReturn;
     }
 }
