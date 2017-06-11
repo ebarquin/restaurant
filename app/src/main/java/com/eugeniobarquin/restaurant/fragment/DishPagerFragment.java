@@ -58,6 +58,7 @@ public class DishPagerFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_dish_pager,container, false);
 
         mPager = (ViewPager) root.findViewById(R.id.view_pager);
+
         mTable = new Table();
         DishPagerAdapter adapter = new DishPagerAdapter(getFragmentManager(), mTable);
 

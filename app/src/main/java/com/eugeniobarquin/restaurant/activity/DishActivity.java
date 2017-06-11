@@ -43,6 +43,7 @@ public class DishActivity extends AppCompatActivity implements TableListFragment
     @Override
     public void onTableSelected(Table table) {
         Intent intent = new Intent(this, DishPagerActivity.class );
+        intent.putExtra(DishPagerActivity.EXTRA_TABLE, table);
         startActivity(intent);
     }
 
