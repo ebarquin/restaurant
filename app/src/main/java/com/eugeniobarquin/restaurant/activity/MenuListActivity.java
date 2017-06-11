@@ -6,6 +6,7 @@ import android.support.annotation.MenuRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.widget.ListView;
 import android.widget.ViewSwitcher;
 
 import com.eugeniobarquin.restaurant.R;
@@ -21,21 +22,21 @@ import java.net.URL;
 
 
 public class MenuListActivity extends AppCompatActivity {
-    private MenuRestarurant mMenuRestaurant;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        ListView list = (ListView) findViewById(R.id.list_menu);
 
         setContentView(R.layout.activity_menu_list);
 
         //Access to model
-        final AsyncTask<MenuRestarurant, Integer, MenuDish> menuRestaurantDownloader = new AsyncTask<MenuRestarurant, Integer, MenuDish>() {
+        final AsyncTask<Void, Integer, MenuDish> menuRestaurantDownloader = new AsyncTask<Void, Integer, MenuDish>() {
 
             @Override
-            protected MenuDish doInBackground(MenuRestarurant... params) {
+            protected MenuDish doInBackground(Void... params) {
                 return downloadMenu();
             }
 
@@ -49,7 +50,7 @@ public class MenuListActivity extends AppCompatActivity {
 
 
         };
-        menuRestaurantDownloader.execute(mMenuRestaurant);
+        menuRestaurantDownloader.execute();
 
     }
 
@@ -58,7 +59,7 @@ public class MenuListActivity extends AppCompatActivity {
         InputStream input = null;
 
         try {
-            url = new URL(String.format("http://www.mocky.io/v2/593d20a8110000de0e722a52"));
+            url = new URL(String.format("http://www.mocky.io/v2/593dae651100005b1e722af5"));
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.connect();
             byte data[] = new byte[1024];
@@ -70,7 +71,7 @@ public class MenuListActivity extends AppCompatActivity {
             }
 
             JSONObject jsonRoot = new JSONObject(sb.toString());
-            JSONArray list = jsonRoot.getJSONArray("dish_list");
+            JSONArray list = jsonRoot.getJSONArray("dish");
             JSONObject dish = list.getJSONObject(0);
 
             String name = dish.getString("name");
