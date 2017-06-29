@@ -10,5 +10,5 @@ public class MenuRestarurant {
     public MenuRestarurant(LinkedList<MenuDish> menuDishes) {
         mMenuDishes = menuDishes;
     }
-    
+
 }
