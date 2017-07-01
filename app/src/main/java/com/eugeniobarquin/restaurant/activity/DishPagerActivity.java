@@ -45,6 +45,7 @@ public class DishPagerActivity extends AppCompatActivity {
 
             Bundle data = new Bundle();
             data.putSerializable(ARG_TABLE2, table);
+            fragment.setArguments(data);
         }
 
     }
