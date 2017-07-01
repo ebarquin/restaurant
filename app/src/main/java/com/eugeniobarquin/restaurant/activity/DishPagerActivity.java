@@ -21,6 +21,7 @@ import java.util.LinkedList;
 public class DishPagerActivity extends AppCompatActivity {
 
     public static final String EXTRA_TABLE = "EXTRA_TABLE";
+    private static final String ARG_TABLE2 = "ARG_TABLE" ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,9 @@ public class DishPagerActivity extends AppCompatActivity {
         if (fm.findFragmentById(R.id.fragment_dish_pager) == null) {
             DishPagerFragment fragment = new DishPagerFragment();
             fm.beginTransaction().add(R.id.fragment_dish_pager, fragment).commit();
+
+            Bundle data = new Bundle();
+            data.putSerializable(ARG_TABLE2, table);
         }
 
     }

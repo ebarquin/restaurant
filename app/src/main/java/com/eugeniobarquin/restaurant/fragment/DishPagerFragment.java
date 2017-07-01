@@ -23,7 +23,7 @@ import java.util.LinkedList;
 
 public class DishPagerFragment extends Fragment {
 
-    private static final String ARG_TABLE = "ARG_TABLE";
+    private static final String ARG_TABLE2 = "ARG_TABLE";
 
     private ViewPager mPager;
     private Table mTable;
@@ -31,7 +31,7 @@ public class DishPagerFragment extends Fragment {
     public static DishPagerFragment newInstance(Table table) {
         DishPagerFragment fragment = new DishPagerFragment();
         Bundle arguments = new Bundle();
-        arguments.putSerializable(ARG_TABLE, table);
+        arguments.putSerializable(ARG_TABLE2, table);
         fragment.setArguments(arguments);
 
         return fragment;
@@ -46,7 +46,7 @@ public class DishPagerFragment extends Fragment {
 
 
         if (getArguments() != null) {
-            mTable = (Table) getArguments().getSerializable(ARG_TABLE);
+            mTable = (Table) getArguments().getSerializable(ARG_TABLE2);
         }
         
     }
