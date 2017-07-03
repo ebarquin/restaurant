@@ -1,16 +1,17 @@
 package com.eugeniobarquin.restaurant.activity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.eugeniobarquin.restaurant.R;
 import com.eugeniobarquin.restaurant.model.MenuDish;
-import com.eugeniobarquin.restaurant.model.MenuRestaurant;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -18,7 +19,6 @@ import org.json.JSONObject;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 
@@ -47,14 +47,22 @@ public class MenuListActivity extends AppCompatActivity {
 
                 ListView list = (ListView) findViewById(R.id.list_menu);
 
-                ArrayAdapter<MenuDish> adapter = new ArrayAdapter<MenuDish>(MenuListActivity.this,android.R.layout.simple_list_item_1, menuDishes);
+                final ArrayAdapter<MenuDish> adapter = new ArrayAdapter<MenuDish>(MenuListActivity.this,android.R.layout.simple_list_item_1, menuDishes);
 
                 //Draw ViewList
                 list.setAdapter(adapter);
 
+                list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        MenuDish menuDish = adapter.getItem(i);
+
+                        Intent intent = new Intent(view.getContext(), AddMenuDishToTableActivity.class );
+                        intent.putExtra(AddMenuDishToTableActivity.EXTRA_MENU_DISH, menuDish);
+                        startActivity(intent);
+                    }
+                });
             }
-
-
         };
         menuRestaurantDownloader.execute();
 
@@ -118,6 +126,9 @@ public class MenuListActivity extends AppCompatActivity {
 
         return null;
     }
+
+
+
 
 }
 
