@@ -2,16 +2,14 @@ package com.eugeniobarquin.restaurant.activity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.MenuRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.widget.ListView;
-import android.widget.ViewSwitcher;
 
 import com.eugeniobarquin.restaurant.R;
 import com.eugeniobarquin.restaurant.model.MenuDish;
-import com.eugeniobarquin.restaurant.model.MenuRestarurant;
+import com.eugeniobarquin.restaurant.model.MenuRestaurant;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,6 +17,8 @@ import org.json.JSONObject;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 public class MenuListActivity extends AppCompatActivity {
@@ -33,16 +33,16 @@ public class MenuListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_list);
 
         //Access to model
-        final AsyncTask<Void, Integer, MenuDish> menuRestaurantDownloader = new AsyncTask<Void, Integer, MenuDish>() {
+        final AsyncTask<Void, Integer, LinkedList<MenuDish>> menuRestaurantDownloader = new AsyncTask<Void, Integer, LinkedList<MenuDish>>() {
 
             @Override
-            protected MenuDish doInBackground(Void... params) {
+            protected LinkedList<MenuDish> doInBackground(Void... params) {
                 return downloadMenu();
             }
 
             @Override
-            protected void onPostExecute(MenuDish menuDish) {
-                super.onPostExecute(menuDish);
+            protected void onPostExecute(LinkedList<MenuDish> menuDishes) {
+                super.onPostExecute(menuDishes);
 
                 //Draw ViewList
 
@@ -54,7 +54,7 @@ public class MenuListActivity extends AppCompatActivity {
 
     }
 
-    private MenuDish downloadMenu() {
+    private LinkedList<MenuDish> downloadMenu() {
         URL url = null;
         InputStream input = null;
 
@@ -70,27 +70,39 @@ public class MenuListActivity extends AppCompatActivity {
                 sb.append(new String(data, 0,downloadedBytes));
             }
 
+            //Transform Json into code
             JSONObject jsonRoot = new JSONObject(sb.toString());
             JSONArray list = jsonRoot.getJSONArray("dish");
-            JSONObject dish = list.getJSONObject(0);
 
-            String name = dish.getString("name");
-            String imageString = dish.getString("image");
-            String allergens = dish.getString("allergens");
-            float price = (float) dish.getDouble("price");
-            String notes = dish.getString("notes");
+            LinkedList<MenuDish> menu = new LinkedList<MenuDish>();
 
-            //Convert imageString to drawable
-            int imageResource = R.drawable.ensalada;
-            switch (imageString) {
-                case "paella": imageResource = R.drawable.paella; break;
-                case "ensalada": imageResource = R.drawable.ensalada; break;
-                case "pollo_asado": imageResource = R.drawable.pollo_asado; break;
-                case "sopa": imageResource = R.drawable.sopa; break;
 
+            for(int i=0; i < list.length(); i++) {
+
+                JSONObject dish = list.getJSONObject(i);
+
+                String name = dish.getString("name");
+                String imageString = dish.getString("image");
+                String allergens = dish.getString("allergens");
+                float price = (float) dish.getDouble("price");
+                String notes = dish.getString("notes");
+
+                //Convert imageString to drawable
+                int imageResource = R.drawable.ensalada;
+                switch (imageString) {
+                    case "paella": imageResource = R.drawable.paella; break;
+                    case "ensalada": imageResource = R.drawable.ensalada; break;
+                    case "pollo_asado": imageResource = R.drawable.pollo_asado; break;
+                    case "sopa": imageResource = R.drawable.sopa; break;
+
+
+                }
+                menu.add(new MenuDish(name, imageResource, allergens, price, notes));
 
             }
-            return new MenuDish(name, imageResource,allergens,price,notes);
+
+            return menu;
+
 
 
         } catch (Exception ex) {

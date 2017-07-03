@@ -3,11 +3,11 @@ package com.eugeniobarquin.restaurant.model;
 
 import java.util.LinkedList;
 
-public class MenuRestarurant {
+public class MenuRestaurant {
 
     private LinkedList<MenuDish> mMenuDishes;
 
-    public MenuRestarurant(LinkedList<MenuDish> menuDishes) {
+    public MenuRestaurant(LinkedList<MenuDish> menuDishes) {
         mMenuDishes = menuDishes;
     }
 
