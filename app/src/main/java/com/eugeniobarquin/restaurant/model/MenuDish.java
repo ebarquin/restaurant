@@ -57,10 +57,11 @@ public class MenuDish implements Serializable {
     public void setNotes(String notes) {
         mName = notes;
     }
-//
-//    public MenuDish(String name) {
-//        this(name, null);
-//    }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }
 
 

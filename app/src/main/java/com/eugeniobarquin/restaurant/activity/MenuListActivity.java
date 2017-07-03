@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.eugeniobarquin.restaurant.R;
@@ -44,7 +45,12 @@ public class MenuListActivity extends AppCompatActivity {
             protected void onPostExecute(LinkedList<MenuDish> menuDishes) {
                 super.onPostExecute(menuDishes);
 
+                ListView list = (ListView) findViewById(R.id.list_menu);
+
+                ArrayAdapter<MenuDish> adapter = new ArrayAdapter<MenuDish>(MenuListActivity.this,android.R.layout.simple_list_item_1, menuDishes);
+
                 //Draw ViewList
+                list.setAdapter(adapter);
 
             }
 
