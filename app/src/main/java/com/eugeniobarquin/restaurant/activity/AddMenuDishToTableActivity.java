@@ -38,12 +38,12 @@ public class AddMenuDishToTableActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        super.onOptionsItemSelected(item);
+        boolean superReturn = super.onOptionsItemSelected(item);
         if (item.getItemId() == R.id.menu_save_dish_to_table) {
 
         }
 
-        return true;
+        return superReturn;
     }
 
     private void setUpViews() {
