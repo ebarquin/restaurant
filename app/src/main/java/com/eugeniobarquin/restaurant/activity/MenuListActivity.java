@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ViewSwitcher;
 
 import com.eugeniobarquin.restaurant.R;
 import com.eugeniobarquin.restaurant.model.MenuDish;
@@ -23,6 +24,8 @@ import java.util.LinkedList;
 
 
 public class MenuListActivity extends AppCompatActivity {
+    private static final int LOADING_VIEW_INDEX = 1;
+    private static final int MENU_LIST_INDEX = 0;
 
 
     @Override
@@ -33,12 +36,23 @@ public class MenuListActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_menu_list);
 
+        final ViewSwitcher viewSwitcher = (ViewSwitcher) findViewById(R.id.view_switcher);
+        viewSwitcher.setInAnimation(this, android.R.anim.slide_in_left);
+        viewSwitcher.setOutAnimation(this, android.R.anim.fade_out);
+
         //Access to model
         final AsyncTask<Void, Integer, LinkedList<MenuDish>> menuRestaurantDownloader = new AsyncTask<Void, Integer, LinkedList<MenuDish>>() {
 
             @Override
             protected LinkedList<MenuDish> doInBackground(Void... params) {
                 return downloadMenu();
+            }
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+
+                viewSwitcher.setDisplayedChild(LOADING_VIEW_INDEX);
             }
 
             @Override
@@ -51,6 +65,8 @@ public class MenuListActivity extends AppCompatActivity {
 
                 //Draw ViewList
                 list.setAdapter(adapter);
+
+                viewSwitcher.setDisplayedChild(MENU_LIST_INDEX);
 
                 list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -69,6 +85,7 @@ public class MenuListActivity extends AppCompatActivity {
     }
 
     private LinkedList<MenuDish> downloadMenu() {
+
         URL url = null;
         InputStream input = null;
 
