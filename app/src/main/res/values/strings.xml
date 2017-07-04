@@ -8,7 +8,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="introduce_las_notas">introduce_notes</string>
+    <string name="introduce_notes">Introduce las notas</string>
 
 
 </resources>

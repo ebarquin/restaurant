@@ -59,7 +59,7 @@
         android:text="TextView"
         tools:text="Notas"
         android:singleLine="true"
-        android:hint="@string/introduce_las_notas"
+        android:hint="@string/introduce_notes"
         android:layout_marginLeft="@dimen/default_margin"
         android:layout_marginRight="@dimen/default_margin"
         android:layout_marginBottom="@dimen/default_margin"

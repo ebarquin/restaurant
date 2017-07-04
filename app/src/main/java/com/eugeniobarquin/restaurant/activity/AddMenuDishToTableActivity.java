@@ -40,6 +40,6 @@ public class AddMenuDishToTableActivity extends AppCompatActivity {
         dishName.setText(menuDish.getName());
         dishAlergens.setText(menuDish.getAlergens());
         dishPrice.setText(getString(R.string.dish_price_format, menuDish.getPrice()));
-        dishNotes.setText(menuDish.getNotes());
+        dishNotes.setText("");
     }
 }
