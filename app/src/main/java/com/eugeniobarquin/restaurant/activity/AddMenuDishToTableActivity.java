@@ -3,6 +3,8 @@ package com.eugeniobarquin.restaurant.activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,9 +22,28 @@ public class AddMenuDishToTableActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_menu_dish_to_table);
 
         menuDish = (MenuDish) getIntent().getSerializableExtra(EXTRA_MENU_DISH);
-        Log.d("***********", menuDish.getName());
+
 
         setUpViews();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+
+        getMenuInflater().inflate(R.menu.menu_add_menu_dish_to_table_activity, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.menu_save_dish_to_table) {
+
+        }
+
+        return true;
     }
 
     private void setUpViews() {
