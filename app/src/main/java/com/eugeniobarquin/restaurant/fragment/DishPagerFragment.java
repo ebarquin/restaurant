@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.eugeniobarquin.restaurant.R;
 
@@ -103,6 +104,15 @@ public class DishPagerFragment extends Fragment {
             startActivity(menuListIntent);
         } else if (item.getItemId() == R.id.menu_calculate) {
             Log.v(TAG, "Menu calculate option pressed");
+            Float ticket = 0f ;
+            for(int i = 0; i < mTable.getCount(); i++) {
+                Dish dish = mTable.getDish(i);
+                ticket = ticket + dish.getPrice();
+
+            }
+
+            Toast.makeText(getView().getContext(), "Ticket = " + ticket, Toast.LENGTH_LONG).show();
+
         }
 
 
