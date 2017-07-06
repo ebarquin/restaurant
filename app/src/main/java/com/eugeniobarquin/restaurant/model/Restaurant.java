@@ -10,7 +10,19 @@ import java.util.LinkedList;
 
 public class Restaurant {
 
+    private static Restaurant mInstance;
+
+
     private LinkedList <Table> mRestaurant;
+
+    //Singleton
+    public static Restaurant getInstance(){
+        if (mInstance == null) {
+            //There is no static instance  of Restaurant
+            mInstance = new Restaurant();
+        }
+        return mInstance;
+    }
 
     public Restaurant() {
         mRestaurant = new LinkedList<>();
