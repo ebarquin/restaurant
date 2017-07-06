@@ -3,10 +3,12 @@ package com.eugeniobarquin.restaurant.fragment;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,10 +18,13 @@ import android.view.ViewGroup;
 
 import com.eugeniobarquin.restaurant.R;
 
+import com.eugeniobarquin.restaurant.activity.MenuListActivity;
 import com.eugeniobarquin.restaurant.model.Dish;
 import com.eugeniobarquin.restaurant.model.Table;
 
 import java.util.LinkedList;
+
+import static android.content.ContentValues.TAG;
 
 public class DishPagerFragment extends Fragment {
 
@@ -72,6 +77,7 @@ public class DishPagerFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
 
         inflater.inflate(R.menu.menu_dish_pager, menu);
+        inflater.inflate(R.menu.menu_dish, menu);
     }
 
     @Override
@@ -89,7 +95,16 @@ public class DishPagerFragment extends Fragment {
             mPager.setCurrentItem(mPager.getCurrentItem() + 1);
 
             return true;
+        }else if (item.getItemId() == R.id.menu_add_dish) {
+            Log.v(TAG, "Add dish option pressed");
+
+            Intent menuListIntent = new Intent(getActivity(), MenuListActivity.class);
+            menuListIntent.putExtra(MenuListActivity.EXTRA_TABLE, mTable);
+            startActivity(menuListIntent);
+        } else if (item.getItemId() == R.id.menu_calculate) {
+            Log.v(TAG, "Menu calculate option pressed");
         }
+
 
         return superReturn;
     }

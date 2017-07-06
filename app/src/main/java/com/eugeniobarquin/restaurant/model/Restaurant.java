@@ -42,10 +42,10 @@ public class Restaurant {
         //Table 4
         LinkedList table4Dishes = new LinkedList();
 
-        mRestaurant.add(new Table(table1Dishes, "Mesa 1"));
-        mRestaurant.add(new Table(table2Dishes, "Mesa 2"));
-        mRestaurant.add(new Table(table3Dishes, "Mesa 3"));
-        mRestaurant.add(new Table(table4Dishes, "Mesa 4"));
+        mRestaurant.add(new Table(table1Dishes, "1"));
+        mRestaurant.add(new Table(table2Dishes, "2"));
+        mRestaurant.add(new Table(table3Dishes, "3"));
+        mRestaurant.add(new Table(table4Dishes, "4"));
     }
 
     public Table getTable(int index) {

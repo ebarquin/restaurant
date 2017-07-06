@@ -13,6 +13,7 @@ import android.widget.ViewSwitcher;
 
 import com.eugeniobarquin.restaurant.R;
 import com.eugeniobarquin.restaurant.model.MenuDish;
+import com.eugeniobarquin.restaurant.model.Table;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,13 +25,16 @@ import java.util.LinkedList;
 
 
 public class MenuListActivity extends AppCompatActivity {
+    public static final String EXTRA_TABLE = "table";
     private static final int LOADING_VIEW_INDEX = 1;
     private static final int MENU_LIST_INDEX = 0;
+    private Table mtable;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mtable = (Table) getIntent().getSerializableExtra(EXTRA_TABLE);
 
         ListView list = (ListView) findViewById(R.id.list_menu);
 
@@ -74,7 +78,8 @@ public class MenuListActivity extends AppCompatActivity {
                         MenuDish menuDish = adapter.getItem(i);
 
                         Intent intent = new Intent(view.getContext(), AddMenuDishToTableActivity.class );
-                        intent.putExtra(AddMenuDishToTableActivity.EXTRA_MENU_DISH, menuDish);
+                        intent.putExtra(AddMenuDishToTableActivity.EXTRA_DISH, menuDish);
+                        intent.putExtra(MenuListActivity.EXTRA_TABLE, mtable);
                         startActivity(intent);
                     }
                 });
@@ -116,7 +121,7 @@ public class MenuListActivity extends AppCompatActivity {
                 String imageString = dish.getString("image");
                 String allergens = dish.getString("allergens");
                 float price = (float) dish.getDouble("price");
-                String notes = dish.getString("notes");
+
 
                 //Convert imageString to drawable
                 int imageResource = R.drawable.ensalada;
@@ -128,7 +133,7 @@ public class MenuListActivity extends AppCompatActivity {
 
 
                 }
-                menu.add(new MenuDish(name, imageResource, allergens, price, notes));
+                menu.add(new MenuDish(name, imageResource, allergens, price));
 
             }
 

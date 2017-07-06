@@ -8,14 +8,14 @@ public class MenuDish implements Serializable {
     private int mImage;
     private String mAlergens;
     private float mPrice;
-    private String mNotes;
+    //private String mNotes;
 
-    public MenuDish(String name, int image, String alergens, float price, String notes) {
+    public MenuDish(String name, int image, String alergens, float price) {
         mName = name;
         mImage = image;
         mAlergens = alergens;
         mPrice = price;
-        mNotes = notes;
+        //mNotes = notes;
     }
 
     public String getName() {
@@ -50,13 +50,8 @@ public class MenuDish implements Serializable {
         mPrice = price;
     }
 
-    public String getNotes() {
-        return mNotes;
-    }
 
-    public void setNotes(String notes) {
-        mName = notes;
-    }
+
 
     @Override
     public String toString() {

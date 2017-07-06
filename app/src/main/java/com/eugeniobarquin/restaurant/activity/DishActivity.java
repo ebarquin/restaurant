@@ -32,7 +32,7 @@ public class DishActivity extends AppCompatActivity implements TableListFragment
         //Check if fragment is already loaded
         if (fm.findFragmentById(R.id.table_list_fragment) == null) {
             //It's not loaded
-            Restaurant restaurant = new Restaurant();
+            Restaurant restaurant = Restaurant.getInstance();
             TableListFragment fragment = TableListFragment.newInstance(restaurant.getTables());
 
             fm.beginTransaction().add(R.id.table_list_fragment, fragment).commit();

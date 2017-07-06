@@ -41,6 +41,9 @@ public class Table implements Serializable {
     public void setNumber(String number) {
         mNumber = number;
     }
+    public void addDish(Dish dish) {
+        mDishes.add(dish);
+    }
 
     @Override
     public String toString() {
