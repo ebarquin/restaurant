@@ -47,7 +47,7 @@ public class Table implements Serializable {
 
     @Override
     public String toString() {
-        return getNumber();
+        return "Mesa " + getNumber() ;
     }
 
 
