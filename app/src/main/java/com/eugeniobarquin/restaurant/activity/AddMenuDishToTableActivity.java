@@ -1,6 +1,7 @@
 package com.eugeniobarquin.restaurant.activity;
 
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.eugeniobarquin.restaurant.R;
 import com.eugeniobarquin.restaurant.model.Dish;
@@ -88,6 +90,8 @@ public class AddMenuDishToTableActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, DishActivity.class );
         startActivity(intent);
+        Toast.makeText(this, "Se ha añadido el plato", Toast.LENGTH_LONG).show();
+        //Snackbar.make(findViewById(android.R.id.content), "Plato añadido", Snackbar.LENGTH_LONG).show();
 
 
     }
